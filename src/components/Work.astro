@@ -1,50 +1,66 @@
 ---
 
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif,svg}');
+
+const gameImage = images['/src/assets/images/game.svg'];
+
+if (!gameImage) {
+  throw new Error(`Image "game.svg" does not exist in glob: "src/assets/images".`);
+}
 ---
 
 
 <main class="full-bleed">
-
   <section class="full">
-    <header>
-      <h2>WORK</h2>
-    </header>
+    <div class="work">
+        <h2>WORK</h2>
+
+    </div>
     
+
     <ul role="list">
       <li>
-        
         <h3>To Do List</h3>
         <p>Javascript</p>
+        <button>View</button>
       </li>
       
       <li>
-  
+         <figure>
+            <Image src={gameImage()} alt="Game Image" class="work-images"/>
+        </figure>
         <h3>Imperial Botanic</h3>
         <p>Animated Game</p>
+        <button>View</button>
       </li>
       
       <li>
     
-        <h3>Customer</h3>
+        <h3>Rock paper scissors</h3>
         <p>Group project</p>
+        <button>View</button>
       </li>
       
       <li>
-   
+        <figure>
+            <Image src={gameImage()} alt="Game Image" class="work-images"/>
+        </figure>
         <h3>Opgave</h3>
         <p>Something</p>
+        <button>View</button>
       </li>
     </ul>
-
   </section>
-
 </main>
 
 
 <style>
 
 @layer components {
-.full-bleed {
+.full-bleed, .full {
   grid-column: full-start / full-end;
 }
 
@@ -64,7 +80,7 @@ main {
     1fr
     [full-end];
   column-gap: 1rem;
-  margin-top: 50rem;
+  /* margin-top: 50rem; */
   
   > * {
     grid-column: content;
@@ -75,6 +91,10 @@ main {
     display: grid;
     grid-template-columns: inherit;
     row-gap: 3rem;
+
+    /* prøver en ting her */
+
+
 
     
     > * {
@@ -97,6 +117,15 @@ ul {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
+
+  figure {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+
+    .work-images{
+        border-radius: 8px;
+    }
+  }
   
   li {
     flex-basis: min(400px, 90%);
@@ -111,6 +140,22 @@ ul {
     h3 {
       font-weight: 700;
       font-size: 1.5625rem;
+    }
+
+    p {
+        font-style: italic;
+    }
+    button {
+        margin-top: 3rem;
+        background: var(--lime);
+        color: var(--black);
+        border-radius: 2rem;
+        padding: 0.5rem 1.5rem;
+        order: 3;
+    }
+
+    button:hover{
+        background: var(--pink);
     }
   }
 }
@@ -127,16 +172,13 @@ ul li:hover h3 {
 
 h2 {
     color: #4C6EE2;
-    all: revert;
     margin-block: 0 0.625rem;
     line-height: 1.125;
     text-align: center;
-    
 }
 
 
 h3 {
-  all: revert;
   color: #FFFFFF;
   margin-block: 0 0.625rem;
   line-height: 1.125;
@@ -146,14 +188,32 @@ h2 {
   font-size: 2.8125rem;
 }
 
-header {
+.work {
   color: #4C6EE2;
   font-weight: 900;
   
   p {
     max-inline-size: 67ch;
+    font-style: italic;
   }
 }
+
+ main {
+    animation: CSSscrollReveal ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 50%;
+  }
+
+  @keyframes CSSscrollReveal {
+    from {
+        opacity:0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
 
 
 

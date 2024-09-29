@@ -18,14 +18,20 @@ const { title = "" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+        
+
 	</head>
 	<body>
         <Header/>
         <main>
             <slot/>
         </main>
+        <Footer id="contact"/>
 	</body>
 </html>
 
@@ -34,12 +40,31 @@ const { title = "" } = Astro.props;
 
     @layer global {
         body {
-            background: #4C6EE2;
-        }
-
-
+            background: var(--gray);
+    display: grid;
+    grid-template-columns: [full-start] 1fr [content] minmax(0, 75rem) 1fr [full-end];
+    
+    > header, main, footer {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+      
+      > * {
+        grid-column: content;
+      }
+    }
+    
+    .full-bleed {
+      grid-column: full;
+      display: grid;
+      /* grid-template-columns: subgrid; */
+      
+      > * {
+        grid-column: content;
+      }
+      
+    }
+  }
 }
-
-
 
 </style>

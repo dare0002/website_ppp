@@ -1,0 +1,185 @@
+---
+
+---
+
+<!-- <main class="full-bleed">
+    <section class="full">
+        <h2>Things that I´m good at...</h2>
+
+
+        <div class="scroller">
+            <ul class="tag-list scroller_inner">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+                <li>UX/UI</li>
+                <li>FIGMA</li>
+                <li>REACT</li>
+                <li>ILLUSTRATOR</li>
+            </ul>
+        </div> <br><br>
+
+  </section>
+</main> -->
+
+
+<main class="full-bleed">
+    <section class="full">
+<div class="text-wrapper">
+    <p class="text-banner"><span>HTML</span></p>
+    <p class="text-banner"><span>CSS</span></p>
+    <p class="text-banner"><span>JS</span></p>
+    <p class="text-banner"><span>UX/UI</span></p>
+    <p class="text-banner"><span>REACT</span></p>
+    <p class="text-banner"><span>NODE.JS</span></p>
+    <p class="text-banner"><span>FIGMA</span></p>
+    <p class="text-banner"><span>ILLUSTRATOR</span></p>
+</div>
+</section>
+</main>
+
+<style>
+
+    .full-bleed, .full {
+        grid-column: full-start / full-end;
+    }
+    .text-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        overflow: hidden;
+        position: relative; /* Lägg till position: relative; */
+        /* margin-top: 1rem; */
+        background: var(--gray);
+        width: 100%;
+       
+    }
+
+    .text-banner {
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: var(--blue);
+        /* -webkit-text-stroke-width: 0.8px; */
+        white-space: nowrap;
+        padding: 2rem;
+        letter-spacing: 1rem;
+        animation: move-rtl 20s linear infinite;
+    }
+
+    .text-banner span {
+        margin-right: 1.5rem;
+    }
+
+    .full-bleed {
+    grid-column: full-start / full-end;
+    }
+
+    @keyframes move-rtl {
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+     main {
+    animation: CSSscrollReveal ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 50%;
+  }
+
+  @keyframes CSSscrollReveal {
+    from {
+        opacity:0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <style>
+    @layer components {
+
+        main {
+            background: var(--lightpink);
+        }
+
+        .scroller {
+            max-width: 800px;
+            border: 3px solid lime;
+            overflow: hidden;
+        }
+
+        .scroller_inner{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding-block: 1rem;
+
+                min-width: 100%;
+                width: max-content;
+            }
+
+        .scroller [data-animated= true] {
+            overflow: hidden;
+            -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+            mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+        }
+
+        .scroller [data-animated=true] .scroller_inner {
+            flex-wrap: nowrap;
+            animation: scroll 10s linear infinite;
+        }
+
+        .tag-list {
+            margin: 0;
+            padding-inline: 0;
+            list-style: none;
+        }
+
+        .tag-list li{
+            padding: 1rem;
+            background: var(--pink);
+            border-radius: 0.5rem;
+        }
+
+        @keyframes scroll {
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+
+    }
+</style> -->
+
+
+<!-- <script>
+
+    const scrollers = document.querySelectorAll(".scroller");
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        addAnimation();
+    }
+
+    function addAnimation () {
+        console.log("Adding animation");
+        scrollers.forEach(scroller => {
+            scroller.setAttribute("data-animated", "true");
+        });
+    }
+
+
+
+</script> -->

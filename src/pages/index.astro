@@ -5,10 +5,25 @@ import Hero from "../components/Hero.astro"
 
 import Work from "../components/Work.astro"
 
+import Banner from "../components/Banner.astro";
+
+import About from "../components/About.astro";
+
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+
+// const aboutImage = images['/src/assets/images/about-hero.jpg'];
+
+// if (!aboutImage) {
+//   throw new Error(`Image "about-hero.jpg" does not exist in glob: "src/assets/images".`);
+// }
+
 ---
 
 <Baselayout title="Home">
-	<Hero></Hero>
-	<Work></Work>
-
+	<Hero id="hero"></Hero>
+	<Work id="work"></Work>
+	<Banner id="skills"></Banner>
+	<About id="about"></About>
 </Baselayout>	
+

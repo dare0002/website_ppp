@@ -1,2 +1,89 @@
 ---
+
+
 ---
+
+
+<footer>
+    <div class="container">
+        <ul>
+            <li><a href="https://codepen.io/dare0002">Codepen</a></li>
+            <li><a href="https://github.com/dare0002">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/daniela-parisa-rezai-a90a70211/?originalSubdomain=dk">Linkedin</a></li>
+            <li><a href="mailto:ela_rezai@hotmail.com">Mail</a></li>
+        </ul>
+            <hr class="line">
+    </div>
+</footer>
+
+
+<style>
+
+    footer {
+        background: var(--blue);
+        color: var(--pink);
+        text-align: center;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        padding: 2.88rem;
+        gap: 2rem;
+
+        container-type: inline-size;
+    }
+
+    ul {
+        list-style: none;
+        color: var(--white);
+        
+    }
+
+    li {
+        margin-bottom: 1rem;
+    }
+
+    li a {
+      color: var(--white);
+      font-family: var(--primaryfont);
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 1rem; 
+      
+    }
+
+
+    ul li a:hover::before {
+     content: ''; 
+        position: absolute;
+        top: 50%;  /* Centrera vertikalt */
+        left: 50%; /* Centrera horisontellt */
+        transform: translate(-50%, -50%); /* Flytta till mitten */
+        width: 100%; /* Justera bredden */
+        height: 100%; /* Justera höjden */
+        border: 1px solid var(--lime); 
+        pointer-events: none; 
+        box-sizing: border-box;
+    }
+
+
+    .line {
+        border: solid thin;
+        container-type: inline-size; 
+        width: 100%;
+        height: 0.0625rem;
+        border-color: var(--lime);
+        max-width: 75rem;
+    }
+
+    @container (max-width: 600px) {
+        .line{
+            width: 90%;
+        }
+
+    }
+
+</style>

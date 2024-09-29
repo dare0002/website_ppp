@@ -1,0 +1,183 @@
+---
+
+
+
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif,svg}');
+
+const cvImage = images['/src/assets/images/cv-normal1.jpg'];
+
+if (!cvImage) {
+  throw new Error(`Image "cv-normal1.jpg" does not exist in glob: "src/assets/images".`);
+}
+---
+
+
+<main class="full-bleed">
+    <section class="full">
+
+<article>
+
+    <h2>About</h2>
+
+  <div class="container">
+    <figure>
+      <Image src={cvImage()} alt="CV Image" class="cv-image"/>
+    </figure>
+    <div class="flow">
+      <div class="first-content">
+        <div class="name-title">
+          <h3>Daniela Parisa Rezai</h3>
+          <p class="title">Multimedia Design and Frontend Developer Student</p>
+        </div>
+
+      </div>
+            <p>I´m originally from Gothenburg, Sweden and have lived in Copenhagen for the past 5 years.
+                I´m currently studying at the Copenhagen School of Design and Technology, also known as KEA, in Copenhagen, and the time has come for me to find a 10-week internship. 
+                
+                </p> 
+            <hr>
+            <h3>Past experience</h3>
+            <p>As a student specializing in Frontend Development , I´m eager to learn more about coding and to work both individually and as a part of a team.
+                I am keen to expand my knowledge and take on new challenges in a real-world setting.  <br><br>
+
+    </div>
+  </div>
+  </article>
+
+  </section>
+
+  </main>
+
+
+
+<style>
+
+@layer components {
+
+    
+
+  article {
+    container: my-container / inline-size;
+
+    h2 {
+        text-align: center;
+        margin-top: 2rem;
+    }
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    @container my-container (width < 700px) {
+      grid-template-columns: revert;
+      gap: 0rem;
+      margin-top: 0;
+
+        .cv-image{
+          width: 100%;
+          max-width: 380px;
+          height:  380px;
+          margin: 0 auto;
+          border-radius: 50%;
+
+          
+        }
+      }
+    }
+
+    hr {
+        color: #C1C1C1;
+        margin-top: 2rem;
+    }
+
+    .first-content {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .title {
+        color: #595566;
+        font-family: Cabin;
+        font-size: 1.25rem;
+        --flow-space: 0px;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+    .h2-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .cv-image {
+        max-width: 480px;
+        height: 480px;
+        width: 100%;
+        border-radius: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0px 0px 5px #ED9BBD,
+                    0px 0px 25px #ED9BBD;
+    }
+
+     .cv-image:hover {
+        box-shadow: 0px 0px 50px #7796FF;
+     }
+
+
+
+
+@layer {
+  body {
+    min-height: 100svh;
+    display: grid;
+    place-content: center;
+  }
+}
+
+ main {
+    animation: CSSscrollReveal ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 50%;
+  }
+
+  @keyframes CSSscrollReveal {
+    from {
+        opacity:0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+
+
+@container my-container (width < 700px) {
+  &::before {
+    /* top: -10px;  */
+    left: -20px;
+    /* inline-size: 100px; */
+  }
+
+  &::after {
+    left: -0.5rem;
+    top: -1rem;
+    width: 100px;
+  }
+
+}
+
+}
+
+</style>
